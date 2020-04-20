@@ -1,51 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@android:color/black"
+    android:foregroundGravity="top"
     tools:context=".MainActivity">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="false">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="top"
+            android:contentDescription="@string/empty"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/top_bg" />
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
             style="?metaButtonBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|top"
             android:background="@color/black_overlay"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             tools:ignore="UselessParent">
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
+            <TextView
+            android:id="@+id/command_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/debug_panel_padding"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal|top"
+            android:text="@string/app_name"
+            android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/connect_status"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+                android:foregroundGravity="center_horizontal"
+                android:gravity="center_horizontal|top"
+                android:text="@string/empty"
+                android:textColor="@android:color/holo_orange_dark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
 
         </LinearLayout>
+
+
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/web_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/splash_margin"
+        android:layout_marginBottom="@dimen/splash_margin"
+        android:paddingLeft="@dimen/def_margin"
+        android:paddingRight="@dimen/def_margin" />
+
+    <FrameLayout
+        android:id="@+id/btn_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/splash_margin"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="@dimen/ic_launcher_size"
+            android:layout_height="@dimen/ic_launcher_size"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_back"
+            android:focusable="false"
+            android:gravity="bottom|center_horizontal"
+            android:visibility="visible" />
+    </FrameLayout>
 </FrameLayout>
+
+
