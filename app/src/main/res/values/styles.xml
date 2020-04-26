@@ -10,10 +10,10 @@
     </style>
 
     <style name="TextLCD" parent="@android:style/TextAppearance.Widget.TextView">
-        <item name="android:layout_marginStart">115dip</item>
+        <item name="android:layout_marginStart">120dip</item>
+        <item name="android:layout_marginEnd">65dip</item>
         <item name="android:padding">1dip</item>
         <item name="android:fontFamily">monospace</item>
-        <item name="android:layout_marginEnd">60dip</item>
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:foregroundGravity">left</item>
         <item name="android:textAllCaps">true</item>
