@@ -4,7 +4,22 @@
          "cmd" : 0,
          "external" : false,
          "icon" : "ic_home.png",
-         "items" : [],
+         "items" : [
+            {
+               "cmd" : 1,
+               "desc" : "Restart Smart Panel",
+               "icon" : "ic_restart.png",
+               "name" : "Restart",
+               "toggle" : false
+            },
+            {
+               "cmd" : 7,
+               "desc" : "Close Smart Panel Application",
+               "icon" : "ic_close.png",
+               "name" : "Close Application",
+               "toggle" : false
+            }
+         ],
          "program" : "Home Screen"
       },
       {
@@ -37,7 +52,8 @@
                "cmd" : 41,
                "desc" : "Night or Day Mode",
                "icon" : "ic_timer.png",
-               "name" : "Swap Time Mode"
+               "name" : "Swap Time Mode",
+               "toggle" : false
             }
          ],
          "program" : "Analog & Digital Time"
@@ -51,13 +67,15 @@
                "cmd" : 51,
                "desc" : "More Weather per Day",
                "icon" : "ic_details.png",
-               "name" : "More Forecast"
+               "name" : "More Forecast",
+               "toggle" : false
             },
             {
                "cmd" : 52,
                "desc" : "Run Script Magic Season",
                "icon" : "ic_magic.png",
-               "name" : "Magic Season"
+               "name" : "Magic Season",
+               "toggle" : false
             }
          ],
          "program" : "Weather Forecast"
@@ -83,21 +101,24 @@
          "items" : [
             {
                "cmd" : 4,
-               "desc" : "Set Backlight for Day or Night",
+               "desc" : "Set Backlight for Night or Day",
                "icon" : "ic_light.png",
-               "name" : "Set Backlight"
+               "name" : "Night Mode",
+               "toggle" : true
             },
             {
                "cmd" : 5,
                "desc" : "Auto Swap Screen ON/OFF",
                "icon" : "ic_swap.png",
-               "name" : "Auto Swap Screen"
+               "name" : "Auto Swap Screen",
+               "toggle" : true
             },
             {
                "cmd" : 9,
                "desc" : "Show/Hide Log for Screen Panel",
                "icon" : "ic_log.png",
-               "name" : "Show Log"
+               "name" : "Show Log",
+               "toggle" : true
             }
          ],
          "program" : "Configure Smart Panel"
