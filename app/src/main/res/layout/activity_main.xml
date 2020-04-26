@@ -17,11 +17,11 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="344dp"
             android:layout_gravity="top"
             android:contentDescription="@string/empty"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/top_bg" />
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/top_panel" />
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
@@ -29,28 +29,40 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal|top"
-            android:background="@color/black_overlay"
+            android:background="@android:color/transparent"
             android:orientation="vertical"
             tools:ignore="UselessParent">
 
             <TextView
-            android:id="@+id/command_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/debug_panel_padding"
-            android:foregroundGravity="center_horizontal"
-            android:gravity="center_horizontal|top"
-            android:text="@string/app_name"
-            android:textColor="@color/colorAccent" />
+                android:id="@+id/command_id"
+                style="@style/TextLCD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lcd_text_margin"
+                android:text="@string/patern_cmd" />
 
             <TextView
                 android:id="@+id/connect_status"
+                style="@style/TextLCD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:foregroundGravity="center_horizontal"
-                android:gravity="center_horizontal|top"
-                android:text="@string/empty"
-                android:textColor="@android:color/holo_orange_dark" />
+                android:text="@string/patern_state" />
+
+            <TextView
+                android:id="@+id/app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/def_margin"
+                android:background="@color/title_bg"
+                android:padding="@dimen/title_padding"
+                android:shadowColor="@color/navBar"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="@string/app_title"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/background_light" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,15 +79,16 @@
         android:id="@+id/web_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/splash_margin"
-        android:layout_marginBottom="@dimen/splash_margin"
+        android:layout_marginTop="@dimen/webview_top_margin"
+        android:layout_marginBottom="@dimen/webview_bottom_margin"
+        android:background="@android:color/transparent"
         android:paddingLeft="@dimen/def_margin"
         android:paddingRight="@dimen/def_margin" />
 
     <FrameLayout
         android:id="@+id/btn_container"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/splash_margin"
+        android:layout_height="@dimen/webview_bottom_margin"
         android:layout_gravity="bottom">
 
         <Button
@@ -84,6 +97,7 @@
             android:layout_width="@dimen/ic_launcher_size"
             android:layout_height="@dimen/ic_launcher_size"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/def_margin"
             android:background="@drawable/btn_back"
             android:focusable="false"
             android:gravity="bottom|center_horizontal"

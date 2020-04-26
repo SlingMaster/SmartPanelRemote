@@ -6,6 +6,19 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/navBar</item>
+    </style>
+
+    <style name="TextLCD" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:layout_marginStart">115dip</item>
+        <item name="android:padding">1dip</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:layout_marginEnd">60dip</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:foregroundGravity">left</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15dip</item>
     </style>
 
     <style name="FullscreenTheme" parent="AppTheme">
@@ -29,6 +42,7 @@
         <!--<item name="android:textColorPrimary">@color/colorTextBody</item>-->
         <item name="android:textColorSecondary">@color/colorTextDesc</item>
 
+        <item name="android:navigationBarColor">@color/navBar</item>
 
         <!-- active thumb & track color (30% transparency) -->
         <item name="colorControlActivated">@color/colorAccent</item>
@@ -41,10 +55,10 @@
         <item name="actionBarStyle">@style/ActionBar.Solid</item>
     </style>
 
-    <style name="PreferenceScreenStyle" parent="PreferencesTheme">
+    <!-- Preference Screen Theme -->
+    <style name="AppTheme_PreferenceScreenStyle">
         <item name="android:textColorPrimary">@color/primary_text_color_selector</item>
         <item name="android:textColorSecondary">@color/secondary_text_color_selector</item>
-        <item name="actionBarStyle">@style/ActionBar.Solid</item>
     </style>
 
     <style name="ActionBar.Solid" parent="@style/Widget.AppCompat.ActionBar.Solid">
