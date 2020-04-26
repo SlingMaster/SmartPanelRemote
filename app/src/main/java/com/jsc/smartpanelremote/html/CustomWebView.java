@@ -7,6 +7,7 @@ package com.jsc.smartpanelremote.html;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.http.SslError;
 import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
@@ -60,7 +61,7 @@ public class CustomWebView extends WebView {
         //webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         //webView.setScrollbarFadingEnabled(false);
         // set default black color ------------
-        setBackgroundColor(0);
+        setBackgroundColor(Color.TRANSPARENT);
 
         // web settings --------------------------------------
         WebSettings webSettings = getSettings();

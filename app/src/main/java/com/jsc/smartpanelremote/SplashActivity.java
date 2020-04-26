@@ -66,7 +66,6 @@ public class SplashActivity extends AppCompatActivity {
         mVisible = true;
         mContentView = findViewById(R.id.splash);
 
-
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +124,6 @@ public class SplashActivity extends AppCompatActivity {
     private void show() {
         mVisible = true;
         mHideHandler.removeCallbacks(mHidePart2Runnable);
-//        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
     }
 
     // ===================================

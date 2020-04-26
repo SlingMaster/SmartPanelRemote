@@ -71,6 +71,18 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private final Runnable mShowPart2Runnable = new Runnable() {
+        @Override
+        public void run() {
+            // Delayed display of UI elements
+//            ActionBar actionBar = getSupportActionBar();
+//            if (actionBar != null) {
+//                actionBar.show();
+//            }
+            webContainer.setVisibility(View.VISIBLE);
+        }
+    };
+
     // ===================================
     private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
         @Override
@@ -257,14 +269,26 @@ public class MainActivity extends AppCompatActivity {
     // ===================================
     private void hide() {
         mVisible = false;
+        mHideHandler.removeCallbacks(mShowPart2Runnable);
         mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
     }
 
     // ===================================
     @SuppressLint("InlinedApi")
     private void show() {
+//        mVisible = true;
+//        mHideHandler.removeCallbacks(mHidePart2Runnable);
+
+
+        // Show the system bar
+        webContainer.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+
         mVisible = true;
+
+        // Schedule a runnable to display UI elements after a delay
         mHideHandler.removeCallbacks(mHidePart2Runnable);
+        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
     }
 
     // ===================================
@@ -281,13 +305,37 @@ public class MainActivity extends AppCompatActivity {
         new connectTask().execute("");
 
         if (mTcpClient != null) {
+            showTextLCD(json);
+        }
+    }
+
+    // ===================================
+    private void showTextLCD(JSONObject json) {
+        int cmd = 0;
+        boolean state = false;
+        boolean is_state = false;
+        if (mTcpClient != null) {
+            try {
+                if (json.has("cmd")) {
+                    cmd = json.getInt("cmd");
+                }
+                is_state = json.has("state");
+                if (is_state) {
+                    state = json.getBoolean("state");
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             TextView viewCMD = findViewById(R.id.command_id);
-            viewCMD.setText(sendData);
+            String str = "000" + cmd;
+            String substring = str.substring(str.length() - 3);
+            String strCmd = String.format("$%04X | ", cmd) + substring + " |  " +
+                    (is_state ? (state ? "(  ©)" : "(©  )") : "");
+            viewCMD.setText( strCmd);
             TextView viewStatus = findViewById(R.id.connect_status);
             viewStatus.setText(getResources().getString(R.string.msg_send));
         }
     }
-
 
     // ===================================================
     private class connectTask extends AsyncTask<String, String, TCPClient> {
