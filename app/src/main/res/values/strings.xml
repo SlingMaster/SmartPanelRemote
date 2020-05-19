@@ -1,6 +1,40 @@
 <resources>
     <string name="app_name">Smart Panel Remote</string>
+    <string name="empty"> </string>
+    <string name="patern_cmd">••••• | ••• |</string>
+    <string name="patern_state">Ready</string>
+    <string name="app_title">•  S E L E C T    A P P L I C A T I O N  •</string>
+    <!--    url-->
+    <string name="url_ui_debug">http://192.168.1.2/Projects/SmartPanel/action</string>
+    <string name="url_ui">file:///android_asset/index.html</string>
+    <string name="scr_json">panel_ctrl_cmd.json</string>
+    <!--    msg-->
+    <string name="msg_not_wifi_connection">No WiFi connection</string>
+    <string name="msg_exit">Press once again to exit!</string>
+    <string name="msg_send">Send</string>
 
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="ip_header">PANEL CONFIGURETION</string>
+    <string name="debug_header">DEBUG PREFERENCE</string>
+
+    <!-- Configure Preference -->
+    <string name="ip_adr_title">Panel IP Address</string>
+    <string name="port_title">Port</string>
+    <!-- Debug Preferences -->
+    <string name="debug_title">Debug</string>
+    <string name="debug_summary_on">Debug Mode is ON</string>
+    <string name="debug_summary_off">Debug Mode is OFF</string>
+    <string name="cache_title">Cache Clear</string>
+    <string name="cache_summary_on">Cache Clear is ON</string>
+    <string name="cache_summary_off">Cache Clear is OFF</string>
+    <!-- About Preference -->
+    <string name="version">Version • </string>
+    <string name="version_summary">Ver •</string>
+    <string name="copyright">© 2020 JSC Design \nand Programming by Alex Dovby</string>
+    <string name="about_copyright">© 2020 Jeneral Samopal Company \nDesign and Programming by Alex Dovby</string>
+
+
 </resources>

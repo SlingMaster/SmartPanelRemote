@@ -1,8 +1,48 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file(var)
+            storePassword 'SlingMaster'
+            keyAlias = 'AS'
+            keyPassword 'SlingMasterJSC'
+        }
+    }
     compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+
+    // ======================================================
+    // auto increment application version
+    // ======================================================
+    def versionPropsFile = file('version.properties')
+    Properties versionProps = new Properties()
+    if (versionPropsFile.exists())
+        versionProps.load(new FileInputStream(versionPropsFile))
+    def _patch = (versionProps['PATCH'] ?: "0").toInteger() + 1
+    def _major = (versionProps['MAJOR'] ?: "0").toInteger()
+    def _minor = (versionProps['MINOR'] ?: "0").toInteger()
+    List<String> runTasks = gradle.startParameter.getTaskNames()
+    def value = 0
+    for (String item : runTasks)
+        if (item.contains("assembleRelease")) {
+            value = 1
+        }
+    def _versionCode = (versionProps['VERSION_CODE'] ?: "0").toInteger() + value
+    if (_patch == 99) {
+        _patch = 0
+        _minor = _minor + 1
+    }
+    if (_minor == 99) {
+        _minor = 0
+        _major = _major + 1
+    }
+    versionProps['MAJOR'] = _major.toString()
+    versionProps['MINOR'] = _minor.toString()
+    versionProps['PATCH'] = _patch.toString()
+    versionProps['VERSION_CODE'] = _versionCode.toString()
+    versionProps.store(versionPropsFile.newWriter(), null)
+    def _versionName = "${_major}.${_versionCode}.${_minor}.${_patch}"
+    // ======================================================
 
     defaultConfig {
         applicationId "com.jsc.smartpanelremote"
@@ -10,7 +50,9 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
+        // ==================================================
+        versionName _versionName
+        // ==================================================
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -20,6 +62,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 }
 
@@ -28,6 +74,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.preference:preference:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

@@ -1,0 +1,58 @@
+<!--
+  ~ Copyright (c) 2020.
+  ~ RF Controls
+  ~ Design and Programming by Alex Dovby
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:background="@color/colorPrimaryDark">
+        <PreferenceCategory
+            android:layout_width="match_parent"
+            app:layout="@layout/pref_about_ic">
+            <EditTextPreference
+                android:selectable="false"
+                android:shouldDisableView="true"
+                app:key="version"
+                app:summary="@string/version"
+                app:useSimpleSummaryProvider="true" />
+
+        </PreferenceCategory>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_settings_select"
+        app:title="@string/ip_header">
+        <EditTextPreference
+            android:icon="@drawable/ic_ip"
+            app:key="panel_ip"
+            app:title="@string/ip_adr_title"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:icon="@drawable/ic_port"
+            app:key="port"
+            app:title="@string/port_title"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_gr_debug"
+        app:title="@string/debug_header">
+        <SwitchPreferenceCompat
+            android:icon="@drawable/ic_clear"
+            app:key="sw_clear_cache"
+            app:summaryOff="@string/cache_summary_off"
+            app:summaryOn="@string/cache_summary_on"
+            app:title="@string/cache_title" />
+        <SwitchPreferenceCompat
+            android:icon="@drawable/ic_debug"
+            app:key="sw_debug"
+            app:summaryOff="@string/debug_summary_off"
+            app:summaryOn="@string/debug_summary_on"
+            app:title="@string/debug_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:layout_width="match_parent"
+        app:layout="@layout/pref_copyright" />
+</PreferenceScreen>

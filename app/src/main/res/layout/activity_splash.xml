@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".SplashActivity">
+
+    <ImageView
+        android:id="@+id/splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginLeft="@dimen/btn_margin_bottom"
+        android:layout_marginRight="@dimen/btn_margin_bottom"
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@drawable/splash" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/btn_margin_bottom"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/btn_settings"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="@dimen/ic_launcher_size"
+                android:layout_height="@dimen/ic_launcher_size"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/btn_settings"
+                android:focusable="false"
+                android:gravity="center_horizontal"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

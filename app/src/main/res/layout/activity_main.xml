@@ -1,51 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@android:color/black"
+    android:foregroundGravity="top"
     tools:context=".MainActivity">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="false">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="344dp"
+            android:layout_gravity="top"
+            android:contentDescription="@string/empty"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/top_panel" />
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
             style="?metaButtonBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|top"
+            android:background="@android:color/transparent"
+            android:orientation="vertical"
             tools:ignore="UselessParent">
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/command_id"
+                style="@style/TextLCD"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+                android:layout_marginTop="@dimen/lcd_text_margin"
+                android:text="@string/patern_cmd" />
+
+            <TextView
+                android:id="@+id/connect_status"
+                style="@style/TextLCD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/patern_state" />
+
+            <TextView
+                android:id="@+id/app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/def_margin"
+                android:background="@color/title_bg"
+                android:padding="@dimen/title_padding"
+                android:shadowColor="@color/navBar"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="@string/app_title"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/background_light" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
 
         </LinearLayout>
+
+
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/web_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/webview_top_margin"
+        android:layout_marginBottom="@dimen/webview_bottom_margin"
+        android:background="@android:color/transparent"
+        android:paddingLeft="@dimen/def_margin"
+        android:paddingRight="@dimen/def_margin" />
+
+    <FrameLayout
+        android:id="@+id/btn_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/webview_bottom_margin"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="@dimen/ic_launcher_size"
+            android:layout_height="@dimen/ic_launcher_size"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/def_margin"
+            android:background="@drawable/btn_back"
+            android:focusable="false"
+            android:gravity="bottom|center_horizontal"
+            android:visibility="visible" />
+    </FrameLayout>
 </FrameLayout>
+
+
